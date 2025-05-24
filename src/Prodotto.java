@@ -7,7 +7,7 @@ public class Prodotto {
    private String name;   
    private String description;
    private BigDecimal price;
-   private BigDecimal iva = new BigDecimal("0.22").setScale(2, RoundingMode.HALF_UP); // valore di default per l'iva
+   private BigDecimal iva;
    private final int code;
    private boolean isAvailable = false; 
    
@@ -19,6 +19,11 @@ public class Prodotto {
     this.iva = iva.setScale(2, RoundingMode.HALF_UP);
     this.isAvailable = false;
     generateNewBasePrice();
+    }
+
+// 2° Costruttore (IVA di default)
+    public Prodotto(String name, String description) {
+        this(name, description, new BigDecimal("0.22")); // IVA default 22%
     }
 
     // capacità prodotto
